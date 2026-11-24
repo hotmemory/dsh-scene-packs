@@ -1,0 +1,6 @@
+# dataDir 默认就是 ~/.dsh/scene-packs；要改再取消下面这行注释。
+- insert:
+    - id: dsh-scene-packs
+      name: dsh-scene-packs
+      # config:
+      #   dataDir: "D:/somewhere/scene-packs"

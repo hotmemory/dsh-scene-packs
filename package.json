@@ -1,0 +1,12 @@
+{
+  "name": "dsh-scene-packs",
+  "version": "0.1.0",
+  "description": "Per-session tool packs for DSH: mask unused tools per scenario (agent-scoped, instant, reversible) and keep an auto-maintained tool inventory.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["dsh", "dsh-plugin", "dsh-bundle", "tools", "agent", "scene"],
+  "exports": { ".": "./index.js" },
+  "files": ["index.js", "cordis.patch.yml", "README.md", "LICENSE"],
+  "engines": { "node": ">=22" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

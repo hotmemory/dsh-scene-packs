@@ -101,3 +101,29 @@ allow  没归组的包 = 隐身 = 漏配会砍掉我要用的东西
 ```
 
 **在"AI 给自己配工具"这件事上，fail-open 是对的。**
+## 验证到什么程度
+
+**单元测试（不依赖 DSH，
+ode test.mjs）** 覆盖八组断言：
+
+`
+1. scan 按前缀归组，普通工具不会被误纳入
+2. gaming 掩 audio_*/image_generate，保留 cv_*
+3. chat 连 cv_* 一起掩
+4. 切换时旧掩码被撤销，且只撤一次
+5. full 不发新掩码，但旧的照样撤
+6. 作用域内工具（scope-local）跳过并警告，不整体失败
+7. 未知场景明确报错，不静默
+8. scene_assign 写回 / scene=none 移出
+`
+
+**真机验证（Windows + DSH Desktop，2026-11-25）**：
+
+`
+✓ scene_scan 扫到 24 个工具，18 个按前缀归组
+✓ scene_switch gaming → 下一轮 cv_learn 真能调用、audio_* 从工具表消失
+✓ scene_switch chat  → 下一轮 cv_recall 报 unknown tool
+✓ 关掉插件再打开 → 掩码自动全撤（孤儿掩码已修）
+`
+
+**没验的**：其他操作系统、其他 DSH 版本、preset 层工具（设计上管不到）。

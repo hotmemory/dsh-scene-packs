@@ -9,6 +9,8 @@
 > A JSON scene table decides what stays; an auto-maintained inventory tracks every tool it has
 > ever seen. Install with `plugin_manager({action:"install_bundle", target:"<this dir>"})`.
 
+> **想帮我在你的机器上验一下？** 看 [TESTING.md](TESTING.md)，五分钟，三件事。
+
 ## 安装
 
 ```powershell
